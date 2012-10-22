@@ -1,0 +1,11 @@
+<Object width="3" height="3" offsetX="0" offsetY="0">
+    <Block x="0" y="0"/>
+    <Block x="1" y="0"/>
+    <Block x="2" y="0"/>
+    <Block x="0" y="1"/>
+    <Block x="1" y="1"/>
+    <Block x="2" y="1"/>
+    <Block x="0" y="2"/>
+    <Block x="1" y="2"/>
+    <Block x="2" y="2"/>
+</Object>

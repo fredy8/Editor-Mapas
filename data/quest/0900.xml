@@ -1,0 +1,18 @@
+<Quest name="Test Quest" description="You need to kill two monsters and hand them back to \(3001).">
+    <requirements>
+        <monster_kills>
+            <monster id="2400" amount="3"/>
+        </monster_kills>
+        <items>
+            <item id="6300" amount="2"/>
+        </items>
+        <gold amount="0"/>
+    </requirements>
+    <rewards>
+        <exp amount="30"/>
+        <gold amount="100"/>
+        <items>
+            <item id="6301" amount="3"/>
+        </items>
+    </rewards>
+</Quest>
