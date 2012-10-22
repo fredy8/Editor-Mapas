@@ -10,7 +10,6 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.util.Point;
 import org.newdawn.slick.opengl.Texture;
 
-
 public class Tools {
 
 	public static final int WIDTH = 200, TAB_WIDTH = 25, TAB_HEIGHT = 90;
@@ -40,20 +39,23 @@ public class Tools {
 			//writes text on the tabs
 			for(int j=0; j<Tabs.values()[i].name().length(); j++)
 			{
-				//TODO vertical center
+				//TODO vertical center alignment
 				String tabName = String.valueOf(Tabs.values()[i].name().charAt(j));
 				Util.write(tabName, Main.MAP_SIZE.getWidth()-Util.getTextWidth(tabName)/2-13, 30 + 93*i + Util.getFontHeight()*j);
 			}
 			
-			int columns = 4;
-			for(int j=0; j<Tabs.values()[i].getTextures().size() ; j++)
+			if(selectedTab == i)
 			{
-				Util.render(Tabs.values()[i].getTextures().get(j), Main.MAP_SIZE.getWidth() + j%columns*35 + 25, j/columns*35 + 70, 32, 32);
+				int columns = 4;
+				for(int j=0; j<Tabs.values()[i].getTextures().size() ; j++)
+				{
+					Texture texture = Tabs.values()[i].getTextures().get(j);
+					Util.render(texture, Main.MAP_SIZE.getWidth() + j%columns*35 + 25, j/columns*35 + 70, 32, 32, texture.getTextureWidth(), texture.getTextureHeight());
+				}
 			}
 		}
 		
 		Util.write(Tabs.values()[selectedTab].name(), Main.MAP_SIZE.getWidth() + 70, 20); //TODO center aligned with Util.getTextWidth
-				
 				
 	}
 	
@@ -83,26 +85,23 @@ public class Tools {
 	
 	enum Tabs{
 		
-		Tile();
+		Tile, Portal, Monster, NPC, Object;
 		
 		private List<Texture> textures = new ArrayList<Texture>();
 		
 		private Tabs()
-		{
-						
-			System.out.println(name().toLowerCase());
-			
+		{						
 			File folder = new File("data/" + name().toLowerCase() + "/");
 						
 			File ids[] = folder.listFiles();
 									
 			for(File folderID: ids)
 			{
-				if(!folderID.getName().startsWith(".")){
-					textures.add(Util.getTexture(name().toLowerCase() + "/" + folderID.getName() + "/texture.png"));
+				if(!folderID.getName().contains(".")){
+					textures.add(Util.getTexture(name().toLowerCase() + "/" + folderID.getName()
+								+ (this.name().equals("Monster") ? "/front.png" : "/texture.png")));
 				}
 			}
-
 		}
 		
 		public List<Texture> getTextures()
