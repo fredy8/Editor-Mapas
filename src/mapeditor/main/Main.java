@@ -29,11 +29,12 @@ public class Main {
 		
 		while (!Display.isCloseRequested())											
 		{
-			Tools.mouse();
-			Tools.keyboard();
 			
 			glClear(GL_COLOR_BUFFER_BIT);
 		
+			Tools.mouse();
+			Tools.keyboard();
+			
 			Map.render();
 			Tools.render();
 

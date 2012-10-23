@@ -28,9 +28,25 @@ public class Tools {
 	
 	public static void render()
 	{
-	
+		
 		//renders the tool pane in the left
 		Util.renderQuad(Main.GRID_SIZE.getWidth(), 0, WIDTH, Main.GRID_SIZE.getHeight(), .4, .4, .4, 1);
+		
+		//renders the grabbed texture
+				if(grabbedTexture != null)
+				{		
+					int x = Mouse.getX();
+					int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
+					if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
+					{
+						Util.render(grabbedTexture, (int)(x/32+.5)*32, (int)(y/32+.5)*32, 32, 32, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
+					}else
+					{
+						glColor4f(1, 1, 1, .5f);
+						Util.render(grabbedTexture, x, y, 32, 32, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
+						glColor4f(1, 1, 1, 1f);
+					}		
+				}
 		
 		//render the tabs of the tool pane
 		for(int i=0; i<Tabs.values().length; i++)
@@ -60,47 +76,44 @@ public class Tools {
 		
 		Util.write(Tabs.values()[selectedTab].name(), Main.GRID_SIZE.getWidth() + 70, 20); //TODO center aligned with Util.getTextWidth
 		
-		if(grabbedTexture != null)
-		{
-			glColor4f(1, 1, 1, .5f);
-			Util.render(grabbedTexture, Mouse.getX(), Main.GRID_SIZE.getHeight() - Mouse.getY() + 1, 32, 32, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
-			glColor4f(1, 1, 1, 1f);
-		}
+
 	}
 	
 	public static void mouse()
 	{
 		while(Mouse.next())
 		{
-			if(!Mouse.getEventButtonState() && Mouse.getDX() == 0 && Mouse.getDY() == 0) //on mouse release
+			if(!Mouse.getEventButtonState()) 
 			{
-				
-				int x = Mouse.getX();
-				int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
-				
-				//Checks for tab click
-				for(int i=0; i<Tabs.values().length; i++)
+					if (Mouse.getDX() == 0 && Mouse.getDY() == 0) //on mouse release
 				{
-					Point tabPos = new Point(Main.GRID_SIZE.getWidth()-TAB_WIDTH, 30+92*i);
 					
-					if(x >= tabPos.getX() && x <= tabPos.getX() + TAB_WIDTH &&
-					   y >= tabPos.getY() && y <= tabPos.getY() + TAB_HEIGHT) //inside ith tab
+					int x = Mouse.getX();
+					int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
+					
+					//Checks for tab click
+					for(int i=0; i<Tabs.values().length; i++) //TODO can be simplified to O(1)
 					{
-						selectedTab = i;
+						Point tabPos = new Point(Main.GRID_SIZE.getWidth()-TAB_WIDTH, 30+92*i);
+						
+						if(x >= tabPos.getX() && x <= tabPos.getX() + TAB_WIDTH &&
+						   y >= tabPos.getY() && y <= tabPos.getY() + TAB_HEIGHT) //inside ith tab
+						{
+							selectedTab = i;
+						}
 					}
 					
-				}
-				
-				//check for texture click
-				for(int i=0; i<Tabs.values()[selectedTab].getTextures().size(); i++)
-				{
-					
-					Point texturePos = new Point(Main.GRID_SIZE.getWidth() + i%COLUMNS*35 + 25, i/COLUMNS*35 + 70);
-					
-					if(x >= texturePos.getX() && x <= texturePos.getX() + 32 &&
-					   y >= texturePos.getY() && y <= texturePos.getY() + 32) //click on the texture
+					//check for texture click
+					for(int i=0; i<Tabs.values()[selectedTab].getTextures().size(); i++) //TODO can be simplified to O(1)
 					{
-						grabbedTexture = Tabs.values()[selectedTab].getTextures().get(i);
+						
+						Point texturePos = new Point(Main.GRID_SIZE.getWidth() + i%COLUMNS*35 + 25, i/COLUMNS*35 + 70);
+						
+						if(x >= texturePos.getX() && x <= texturePos.getX() + 32 &&
+						   y >= texturePos.getY() && y <= texturePos.getY() + 32) //click on the texture
+						{
+							grabbedTexture = Tabs.values()[selectedTab].getTextures().get(i);
+						}
 					}
 				}
 			}
@@ -109,12 +122,15 @@ public class Tools {
 	
 	enum Tabs{
 		
-		Tile, Portal, Monster, NPC, Object;
+		Tile(0), Portal(1), Monster(2), NPC(3), Object(4);
 		
 		private List<Texture> textures = new ArrayList<Texture>();
+		private int id;
 		
-		private Tabs()
-		{						
+		private Tabs(int id)
+		{		
+			this.id = id;
+			
 			File folder = new File("data/" + name().toLowerCase() + "/");
 						
 			File ids[] = folder.listFiles();
@@ -131,6 +147,10 @@ public class Tools {
 		public List<Texture> getTextures()
 		{
 			return textures;
+		}
+
+		public int id() {
+			return id;
 		}
 		
 	}
