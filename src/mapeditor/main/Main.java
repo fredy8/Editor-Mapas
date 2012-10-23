@@ -11,13 +11,13 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Main {
 	
-	public static final Dimension MAP_SIZE = new Dimension(640, 640);
+	public static final Dimension GRID_SIZE = new Dimension(640, 640);
 
 	
 	public Main()
 	{
 		try {
-			Display.setDisplayMode(new DisplayMode(MAP_SIZE.getWidth() + Tools.WIDTH, MAP_SIZE.getHeight()));
+			Display.setDisplayMode(new DisplayMode(GRID_SIZE.getWidth() + Tools.WIDTH, GRID_SIZE.getHeight()));
 			Display.setTitle("Map Editor");
 			Display.create();
 		} catch (LWJGLException e) {
@@ -30,11 +30,13 @@ public class Main {
 		while (!Display.isCloseRequested())											
 		{
 			Tools.mouse();
+			Tools.keyboard();
 			
 			glClear(GL_COLOR_BUFFER_BIT);
 		
+			Map.render();
 			Tools.render();
-			
+
 			Display.update(); 
 			Display.sync(60); 
 		}
@@ -46,7 +48,7 @@ public class Main {
 	private void initGL() {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0,MAP_SIZE.getWidth() + Tools.WIDTH, MAP_SIZE.getHeight(), 0, 1, -1); 
+		glOrtho(0,GRID_SIZE.getWidth() + Tools.WIDTH, GRID_SIZE.getHeight(), 0, 1, -1); 
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

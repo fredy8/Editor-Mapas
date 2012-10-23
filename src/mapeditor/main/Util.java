@@ -1,5 +1,6 @@
 package mapeditor.main;
 
+import static org.lwjgl.opengl.GL11.GL_LINES;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBegin;
@@ -7,11 +8,11 @@ import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glLineWidth;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glTexCoord2f;
 import static org.lwjgl.opengl.GL11.glTranslatef;
 import static org.lwjgl.opengl.GL11.glVertex2f;
-
 
 import java.awt.Color;
 import java.awt.Font;
@@ -196,5 +197,20 @@ public class Util
 		glColor4f(1, 1, 1, 1);
 		glLoadIdentity();
 	}
+	
+	public static void renderLine(int x1, int y1, int x2, int y2, int width)
+	{
+		glLoadIdentity();
+		glLineWidth(width);
+		glBegin(GL_LINES);
+			glVertex2f(x1, y1);
+			glVertex2f(x2, y2);
+			glVertex2f(x1, y1);
+			glVertex2f(x2, y2);
+		glEnd();
+		glLoadIdentity();
+	}
+	
+	
 
 }
