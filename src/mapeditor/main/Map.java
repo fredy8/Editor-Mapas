@@ -28,14 +28,16 @@ public class Map {
 		for(int row = 1; row <= Main.GRID_SIZE.getHeight()/32; row++)
 			Util.renderLine(0, 32*row, Main.GRID_SIZE.getWidth(), 32*row, 1);
 		
-		for(int i=0; i<matrix.length; i++)
+		for(int k=0; k<Tabs.values().length; k++)
 		{
-			for(int j=0; j<matrix[0].length; j++)
+			for(int i=0; i<matrix.length; i++)
 			{
-				matrix[i][j].render(Tabs.Tile);
+				for(int j=0; j<matrix[0].length; j++)
+				{
+					matrix[i][j].render(Tabs.values()[k]);
+				}
 			}
 		}
-		
 	}
 	
 	public static Slot get(int x, int y)

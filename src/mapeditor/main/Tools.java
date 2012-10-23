@@ -82,14 +82,25 @@ public class Tools {
 	public static void mouse()
 	{
 		while(Mouse.next())
-		{
-			if(!Mouse.getEventButtonState()) 
+		{	
+			int x = Mouse.getX();
+			int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
+			
+			if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
 			{
-					if (Mouse.getDX() == 0 && Mouse.getDY() == 0) //on mouse release
+				if(grabbedTexture != null)
 				{
-					
-					int x = Mouse.getX();
-					int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
+					if(Mouse.isButtonDown(0) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0)))
+						Map.get((int)(x/32+.5), (int)(y/32+.5)).add(grabbedTexture, Tabs.values()[selectedTab]);
+					else if((Mouse.isButtonDown(1) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0))))
+						Map.get((int)(x/32+.5), (int)(y/32+.5)).remove(Tabs.values()[selectedTab]);
+				}
+			}
+			
+			if(Mouse.getEventButtonState()) 
+			{
+				if (Mouse.getDX() == 0 && Mouse.getDY() == 0) //on mouse release
+				{
 					
 					//Checks for tab click
 					for(int i=0; i<Tabs.values().length; i++) //TODO can be simplified to O(1)

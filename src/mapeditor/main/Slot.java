@@ -28,7 +28,7 @@ public class Slot {
 	public void render(Tabs type)
 	{
 		if(textures[type.id()] != null)
-		Util.render(textures[type.id()], position.getX(), position.getY(), 32, 32);
+		Util.render(textures[type.id()], position.getX(), position.getY(), 32, 32, textures[type.id()].getTextureWidth(), textures[type.id()].getTextureHeight());
 	}
 	
 	public void removeHover()
@@ -50,7 +50,10 @@ public class Slot {
 	public void remove(Tabs type)
 	{
 		textures[type.id()] = null;
-		locks[type.id()] = false;
+	}
+
+	public void add(Texture texture, Tabs type) {
+		textures[type.id()] = texture;
 	}
 	
 	
