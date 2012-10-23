@@ -1,5 +1,6 @@
 package mapeditor.main;
 
+import static org.lwjgl.opengl.GL11.glColor4f;
 import mapeditor.main.Tools.Tabs;
 
 import org.lwjgl.util.Point;
@@ -22,11 +23,13 @@ public class Map {
 	
 	public static void render()
 	{
+		glColor4f(.4f, .4f, .4f, 1);
 		for(int column = 1; column <= Main.GRID_SIZE.getWidth()/32; column++)
 			Util.renderLine(32*column, 0, 32*column, Main.GRID_SIZE.getHeight(), 1);
 		
 		for(int row = 1; row <= Main.GRID_SIZE.getHeight()/32; row++)
 			Util.renderLine(0, 32*row, Main.GRID_SIZE.getWidth(), 32*row, 1);
+		glColor4f(1, 1, 1, 1);
 		
 		for(int k=0; k<Tabs.values().length; k++)
 		{

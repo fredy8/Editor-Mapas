@@ -148,10 +148,10 @@ public class Util
 	{
 		try
 		{
-			return TextureLoader.getTexture("PNG", new FileInputStream(new File("data/" + path)));
+			return TextureLoader.getTexture("PNG", new FileInputStream(new File(path)));
 		} catch (FileNotFoundException e)
 		{
-			System.out.println("File Not found: " + "data/" + path);
+			System.out.println("File Not found: " + path);
 		} catch (IOException e)
 		{
 		}

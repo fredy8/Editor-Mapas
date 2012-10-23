@@ -20,10 +20,15 @@ public class Tools {
 	public static List<Texture> textures = new ArrayList<Texture>();
 	private static int selectedTab = 0;
 	private static Texture grabbedTexture;
+	private static Texture upArrow, rightArrow, downArrow, leftArrow;
 	
 	static
 	{
 		Util.useFont("Arial", Font.BOLD, 12, Color.BLACK);
+		upArrow = Util.getTexture("editor_data/up_arrow.png");
+		rightArrow = Util.getTexture("editor_data/right_arrow.png");
+		downArrow = Util.getTexture("editor_data/down_arrow.png");
+		leftArrow = Util.getTexture("editor_data/left_arrow.png");
 	}
 	
 	public static void render()
@@ -76,6 +81,12 @@ public class Tools {
 		
 		Util.write(Tabs.values()[selectedTab].name(), Main.GRID_SIZE.getWidth() + 70, 20); //TODO center aligned with Util.getTextWidth
 		
+		glColor4f(1, 1, 1, .3f);
+		Util.render(upArrow, Main.GRID_SIZE.getWidth()/2 - upArrow.getTextureWidth()/2+2, 5, 128, 128);
+		Util.render(rightArrow, Main.GRID_SIZE.getWidth() - rightArrow.getTextureWidth() - 25, Main.GRID_SIZE.getHeight()/2 - rightArrow.getTextureHeight()/2+2, 128, 128);
+		Util.render(downArrow, Main.GRID_SIZE.getWidth()/2 - downArrow.getTextureWidth()/2-2, Main.GRID_SIZE.getHeight() - downArrow.getTextureHeight() - 5, 128, 128);
+		Util.render(leftArrow, 5, Main.GRID_SIZE.getHeight()/2 - leftArrow.getTextureHeight()/2-2, 128, 128);
+		glColor4f(1, 1, 1, 1);
 
 	}
 	
@@ -131,6 +142,19 @@ public class Tools {
 		}
 	}
 	
+	public static void keyboard() {
+		while(Keyboard.next())
+		{
+			if(Keyboard.getEventKeyState())
+			{
+				if(Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
+				{
+					grabbedTexture = null;
+				}
+			}
+		}
+	}
+	
 	enum Tabs{
 		
 		Tile(0), Portal(1), Monster(2), NPC(3), Object(4);
@@ -149,7 +173,7 @@ public class Tools {
 			for(File folderID: ids)
 			{
 				if(!folderID.getName().contains(".")){
-					textures.add(Util.getTexture(name().toLowerCase() + "/" + folderID.getName()
+					textures.add(Util.getTexture("data/" + name().toLowerCase() + "/" + folderID.getName()
 								+ (this.name().equals("Monster") ? "/front.png" : "/texture.png")));
 				}
 			}
@@ -164,19 +188,6 @@ public class Tools {
 			return id;
 		}
 		
-	}
-
-	public static void keyboard() {
-		while(Keyboard.next())
-		{
-			if(Keyboard.getEventKeyState())
-			{
-				if(Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
-				{
-					grabbedTexture = null;
-				}
-			}
-		}
 	}
 	
 }
