@@ -1,5 +1,7 @@
 package mapeditor.main;
 
+import static org.lwjgl.opengl.GL11.glColor4f;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
@@ -10,48 +12,62 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.util.Point;
 import org.newdawn.slick.opengl.Texture;
-import static org.lwjgl.opengl.GL11.*;
 
 public class Tools {
 	
 	//TODO read object's size and render as that size when grabbed
 
-	public static final int WIDTH = 200, TAB_WIDTH = 25, TAB_HEIGHT = 90, COLUMNS = 4;
+	public static final int WIDTH = 200, TAB_WIDTH = 25, TAB_HEIGHT = 90, COLUMNS = (int) ((WIDTH*.85)/(Main.TILE_SIZE+4)+.5);
 	public static List<Texture> textures = new ArrayList<Texture>();
 	private static int selectedTab = 0;
 	private static Texture grabbedTexture;
-	private static Texture upArrow, rightArrow, downArrow, leftArrow;
+	private static Button save;
+	private static long lastPressF, lastPressC, lastPressD;
 	
 	static
 	{
 		Util.useFont("Arial", Font.BOLD, 12, Color.BLACK);
-		upArrow = Util.getTexture("editor_data/up_arrow.png");
-		rightArrow = Util.getTexture("editor_data/right_arrow.png");
-		downArrow = Util.getTexture("editor_data/down_arrow.png");
-		leftArrow = Util.getTexture("editor_data/left_arrow.png");
+		
+		save = new Button("Save", new Point(Main.GRID_SIZE.getWidth() + WIDTH/4, Main.GRID_SIZE.getHeight() - 100), new Runnable(){
+			public void run()
+			{
+				XMLMapWriter writer = new XMLMapWriter("test.xml");
+				writer.dumpFile();
+				writer.close();
+			}
+		});
+		
 	}
 	
 	public static void render()
 	{
-		
 		//renders the tool pane in the left
 		Util.renderQuad(Main.GRID_SIZE.getWidth(), 0, WIDTH, Main.GRID_SIZE.getHeight(), .4, .4, .4, 1);
 		
+		//writes instructions
+		Util.write("Double-click:", Main.GRID_SIZE.getWidth() + 10, Main.GRID_SIZE.getHeight() - 200);
+		Util.write("F - Fill all tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 180);
+		Util.write("C - Clear all tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 160);
+		Util.write("D - Fill all empty tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 140);
+		
+		//renders the save/open button
+		save.render();
+		
 		//renders the grabbed texture
-				if(grabbedTexture != null)
-				{		
-					int x = Mouse.getX();
-					int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
-					if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
-					{
-						Util.render(grabbedTexture, (int)(x/32+.5)*32, (int)(y/32+.5)*32, 32, 32, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
-					}else
-					{
-						glColor4f(1, 1, 1, .5f);
-						Util.render(grabbedTexture, x, y, 32, 32, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
-						glColor4f(1, 1, 1, 1f);
-					}		
-				}
+		if (grabbedTexture != null) {
+			int x = Mouse.getX();
+			int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
+			if (x < Math.min(Main.GRID_SIZE.getWidth(), Map.getWidth()*Main.TILE_SIZE) && y < Math.min(Main.GRID_SIZE.getHeight(), Map.getHeight()*Main.TILE_SIZE)) {
+				Util.render(grabbedTexture, (int) (x / Main.TILE_SIZE + .5) * Main.TILE_SIZE, (int) (y / Main.TILE_SIZE + .5)
+						* Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
+			} else {
+				glColor4f(1, 1, 1, .5f);
+				Util.render(grabbedTexture, x, y, Main.TILE_SIZE,
+						Main.TILE_SIZE, grabbedTexture.getTextureWidth(),
+						grabbedTexture.getTextureHeight());
+				glColor4f(1, 1, 1, 1f);
+			}
+		}
 		
 		//render the tabs of the tool pane
 		for(int i=0; i<Tabs.values().length; i++)
@@ -74,39 +90,23 @@ public class Tools {
 				for(int j=0; j<Tabs.values()[i].getTextures().size() ; j++)
 				{
 					Texture texture = Tabs.values()[i].getTextures().get(j);
-					Util.render(texture, Main.GRID_SIZE.getWidth() + j%COLUMNS*35 + 25, j/COLUMNS*35 + 70, 32, 32, texture.getTextureWidth(), texture.getTextureHeight());
+					Util.render(texture, Main.GRID_SIZE.getWidth() + j%COLUMNS*(Main.TILE_SIZE + 4) + 25, j/COLUMNS*(Main.TILE_SIZE+4) + 70, Main.TILE_SIZE, Main.TILE_SIZE, texture.getTextureWidth(), texture.getTextureHeight());
 				}
 			}
 		}
 		
 		Util.write(Tabs.values()[selectedTab].name(), Main.GRID_SIZE.getWidth() + 70, 20); //TODO center aligned with Util.getTextWidth
 		
-		glColor4f(1, 1, 1, .3f);
-		Util.render(upArrow, Main.GRID_SIZE.getWidth()/2 - upArrow.getTextureWidth()/2+2, 5, 128, 128);
-		Util.render(rightArrow, Main.GRID_SIZE.getWidth() - rightArrow.getTextureWidth() - 25, Main.GRID_SIZE.getHeight()/2 - rightArrow.getTextureHeight()/2+2, 128, 128);
-		Util.render(downArrow, Main.GRID_SIZE.getWidth()/2 - downArrow.getTextureWidth()/2-2, Main.GRID_SIZE.getHeight() - downArrow.getTextureHeight() - 5, 128, 128);
-		Util.render(leftArrow, 5, Main.GRID_SIZE.getHeight()/2 - leftArrow.getTextureHeight()/2-2, 128, 128);
-		glColor4f(1, 1, 1, 1);
-
 	}
 	
 	public static void mouse()
 	{
 		while(Mouse.next())
-		{	
+		{
 			int x = Mouse.getX();
 			int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
 			
-			if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
-			{
-				if(grabbedTexture != null)
-				{
-					if(Mouse.isButtonDown(0) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0)))
-						Map.get((int)(x/32+.5), (int)(y/32+.5)).add(grabbedTexture, Tabs.values()[selectedTab]);
-					else if((Mouse.isButtonDown(1) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0))))
-						Map.get((int)(x/32+.5), (int)(y/32+.5)).remove(Tabs.values()[selectedTab]);
-				}
-			}
+			save.mouse();
 			
 			if(Mouse.getEventButtonState()) 
 			{
@@ -122,6 +122,8 @@ public class Tools {
 						   y >= tabPos.getY() && y <= tabPos.getY() + TAB_HEIGHT) //inside ith tab
 						{
 							selectedTab = i;
+							grabbedTexture = null;
+							return;
 						}
 					}
 					
@@ -129,13 +131,31 @@ public class Tools {
 					for(int i=0; i<Tabs.values()[selectedTab].getTextures().size(); i++) //TODO can be simplified to O(1)
 					{
 						
-						Point texturePos = new Point(Main.GRID_SIZE.getWidth() + i%COLUMNS*35 + 25, i/COLUMNS*35 + 70);
+						Point texturePos = new Point(Main.GRID_SIZE.getWidth() + i%COLUMNS*(Main.TILE_SIZE+4) + 25, i/COLUMNS*(Main.TILE_SIZE+4) + 70);
 						
-						if(x >= texturePos.getX() && x <= texturePos.getX() + 32 &&
-						   y >= texturePos.getY() && y <= texturePos.getY() + 32) //click on the texture
+						if(x >= texturePos.getX() && x <= texturePos.getX() + Main.TILE_SIZE &&
+						   y >= texturePos.getY() && y <= texturePos.getY() + Main.TILE_SIZE) //click on the texture
 						{
 							grabbedTexture = Tabs.values()[selectedTab].getTextures().get(i);
 						}
+					}
+				}
+			}
+			
+			if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
+			{
+				if(grabbedTexture != null)
+				{
+					if(Mouse.isButtonDown(0) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0)))
+					{
+						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
+						if(slot != null)
+							slot.add(grabbedTexture, Tabs.values()[selectedTab]);
+					}else if((Mouse.isButtonDown(1) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0))))
+					{
+						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
+						if(slot != null)
+							slot.remove(Tabs.values()[selectedTab]);
 					}
 				}
 			}
@@ -143,15 +163,64 @@ public class Tools {
 	}
 	
 	public static void keyboard() {
-		while(Keyboard.next())
+		
+		if(Keyboard.getEventKeyState())
 		{
-			if(Keyboard.getEventKeyState())
-			{
-				if(Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
+			switch(Keyboard.getEventKey()){
+			case Keyboard.KEY_ESCAPE:
+				grabbedTexture = null;
+				break;
+			case Keyboard.KEY_F:
+				if(System.currentTimeMillis() < lastPressF + 250 && selectedTab == 0)
 				{
-					grabbedTexture = null;
+					for(int i=0; i<Map.getWidth(); i++)
+					{
+						for(int j=0; j<Map.getHeight(); j++)
+						{
+							if(grabbedTexture != null)
+							Map.get(i, j).add(grabbedTexture, Tabs.values()[selectedTab]);
+						}
+					}
+				}else
+				{
+					lastPressF = System.currentTimeMillis();
 				}
+				break;	
+			case Keyboard.KEY_C:
+			if(System.currentTimeMillis() < lastPressC + 250)
+			{
+				for(int i=0; i<Map.getWidth(); i++)
+				{
+					for(int j=0; j<Map.getHeight(); j++)
+					{
+						Map.get(i, j).remove(Tabs.values()[selectedTab]);
+					}
+				}
+			}else
+			{
+				lastPressC = System.currentTimeMillis();
 			}
+			break;	
+			case Keyboard.KEY_D:
+				if(System.currentTimeMillis() < lastPressD + 250 && selectedTab == 0)
+				{
+					for(int i=0; i<Map.getWidth(); i++)
+					{
+						for(int j=0; j<Map.getHeight(); j++)
+						{
+							if(grabbedTexture != null)
+								if(Map.get(i, j) == null)
+									Map.get(i, j).add(grabbedTexture, Tabs.values()[selectedTab]);
+						}
+					}
+				}else
+				{
+					lastPressD = System.currentTimeMillis();
+				}
+				break;	
+
+		}
+			
 		}
 	}
 	

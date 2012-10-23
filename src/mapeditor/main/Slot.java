@@ -9,7 +9,6 @@ public class Slot {
 
 	private Point position;
 	private Texture[] textures = new Texture[5];
-	private boolean[] locks = new boolean[5]; //lock means the texture is set, not rendered by hover
 
 	public Slot(Point position)
 	{
@@ -28,23 +27,7 @@ public class Slot {
 	public void render(Tabs type)
 	{
 		if(textures[type.id()] != null)
-		Util.render(textures[type.id()], position.getX(), position.getY(), 32, 32, textures[type.id()].getTextureWidth(), textures[type.id()].getTextureHeight());
-	}
-	
-	public void removeHover()
-	{
-		for(int i=0; i<textures.length; i++)
-		{
-			if(locks[i] != true)
-			{
-				textures[i] = null;
-			}
-		}
-	}
-	
-	public void lock(Tabs type)
-	{
-		locks[type.id()] = true;
+			Util.render(textures[type.id()], position.getX() - Map.getRenderOffset().getX()*Main.TILE_SIZE, position.getY() - Map.getRenderOffset().getY()*Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE, textures[type.id()].getTextureWidth(), textures[type.id()].getTextureHeight());
 	}
 	
 	public void remove(Tabs type)

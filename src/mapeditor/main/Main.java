@@ -1,21 +1,46 @@
 package mapeditor.main;
 
-import org.lwjgl.LWJGLException;
+import static org.lwjgl.opengl.GL11.GL_BLEND;
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
+import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_PROJECTION;
+import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.glBlendFunc;
+import static org.lwjgl.opengl.GL11.glClear;
+import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glLoadIdentity;
+import static org.lwjgl.opengl.GL11.glMatrixMode;
+import static org.lwjgl.opengl.GL11.glOrtho;
 
+import java.util.Scanner;
+
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.util.Dimension;
 
-import static org.lwjgl.opengl.GL11.*;
-
-
 public class Main {
 	
-	public static final Dimension GRID_SIZE = new Dimension(640, 640);
-
+	public static final Dimension GRID_SIZE;
+	public static final int TILE_SIZE;
+	
+	static
+	{
+		//loads game configurations
+		XMLParser parser = new XMLParser("game_config.xml");
+				
+		TILE_SIZE = Integer.parseInt(parser.getAttribute("Map", "tile_size").replaceAll("px", ""));
+		int gridWidth = Integer.parseInt(parser.getAttribute("Map", "width"));
+		int gridHeight = Integer.parseInt(parser.getAttribute("Map", "height"));
+				
+		GRID_SIZE = new Dimension(gridWidth*TILE_SIZE, gridHeight*TILE_SIZE);
+	}
 	
 	public Main()
 	{
+		
 		try {
 			Display.setDisplayMode(new DisplayMode(GRID_SIZE.getWidth() + Tools.WIDTH, GRID_SIZE.getHeight()));
 			Display.setTitle("Map Editor");
@@ -28,12 +53,15 @@ public class Main {
 		initGL();
 		
 		while (!Display.isCloseRequested())											
-		{
-			
+		{	
 			glClear(GL_COLOR_BUFFER_BIT);
 		
 			Tools.mouse();
-			Tools.keyboard();
+			while(Keyboard.next())
+			{
+				Tools.keyboard();
+				Map.keyboard();
+			}
 			
 			Map.render();
 			Tools.render();
@@ -57,6 +85,44 @@ public class Main {
 	
 	public static void main(String args[])
 	{
+		
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Map Editor");
+		
+		char action;
+		do{
+			System.out.println("New or open?(n/o)");
+			action = in.next().charAt(0);
+		}while(action != 'n' && action != 'o');
+		
+		if(action == 'n')
+		{			
+			int mapWidth;
+			do{
+				System.out.println("Map width?");
+				mapWidth = in.nextInt();
+			}while(mapWidth <=0 && mapWidth > 100);
+			
+			int mapHeight;
+			do{
+				System.out.println("Map height?");
+				mapHeight = in.nextInt();
+			}while(mapHeight <=0 && mapHeight > 100);
+			
+			Map.newMap(mapWidth, mapHeight);
+			
+		}else if(action == 'o')
+		{
+			int id;
+			do{
+				System.out.println("Map id?");
+				id = in.nextInt();
+			}while(id <=0 && id >= 256);
+			
+			Map.openMap(id);
+		}
+			
 		new Main();
 	}
 	

@@ -69,7 +69,7 @@
 	   <Portal id="2200" x="7" y="14" />
 	   <Portal id="2201" x="1" y="13" />
     </Portals>
-     <Monsters>
+    <Monsters>
     	<Monster id="2401" x="28" y="5" />
     	<Monster id="2401" x="17" y="13" />
     	<Monster id="2401" x="8" y="16" />
