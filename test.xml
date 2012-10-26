@@ -1,12 +1,21 @@
 <Map>
 	<Tiles>
 	</Tiles>
-	<Portal>
-	</Portal>
-	<Monster>
-	</Monster>
-	<NPC>
-	</NPC>
-	<Object>
-	</Object>
+	<Portals>
+		<Portal id="2200" x="6" y="2" />
+		<Portal id="2200" x="8" y="6" />
+	</Portals>
+	<Monsters>
+		<Monster id="2401" x="2" y="6" />
+		<Monster id="2401" x="4" y="6" />
+		<Monster id="2401" x="4" y="8" />
+		<Monster id="2401" x="9" y="3" />
+	</Monsters>
+	<NPCs>
+		<NPC id="2500" x="2" y="1" />
+		<NPC id="2500" x="8" y="7" />
+	</NPCs>
+	<Objects>
+		<Object id="2700" x="0" y="0" />
+	</Objects>
 </Map>

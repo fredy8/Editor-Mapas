@@ -26,6 +26,13 @@ public class Main {
 	public static final Dimension GRID_SIZE;
 	public static final int TILE_SIZE;
 	
+	//TODO map should be "infinite" (expanding) and should be written in xml depending on the max width/height with a tile
+	//TODO render grabbed objects big
+	//TODO no strong entity stacking
+	//TODO render ids with entities in tools
+	//TODO add mouse clicks instructions
+	//TODO write tiles to xml
+	
 	static
 	{
 		//loads game configurations
@@ -91,12 +98,13 @@ public class Main {
 		System.out.println("Map Editor");
 		
 		char action;
+		
 		do{
 			System.out.println("New or open?(n/o)");
 			action = in.next().charAt(0);
 		}while(action != 'n' && action != 'o');
 		
-		if(action == 'n')
+		if(Character.toLowerCase(action) == 'n')
 		{			
 			int mapWidth;
 			do{
@@ -112,7 +120,7 @@ public class Main {
 			
 			Map.newMap(mapWidth, mapHeight);
 			
-		}else if(action == 'o')
+		}else if(Character.toLowerCase(action) == 'o')
 		{
 			int id;
 			do{

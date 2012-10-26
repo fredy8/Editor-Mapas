@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.util.Dimension;
 import org.lwjgl.util.Point;
 import org.newdawn.slick.opengl.Texture;
 
@@ -26,7 +27,7 @@ public class Tools {
 	
 	static
 	{
-		Util.useFont("Arial", Font.BOLD, 12, Color.BLACK);
+		Util.useFont("Arial", Font.BOLD, 12, Color.WHITE);
 		
 		save = new Button("Save", new Point(Main.GRID_SIZE.getWidth() + WIDTH/4, Main.GRID_SIZE.getHeight() - 100), new Runnable(){
 			public void run()
@@ -47,8 +48,12 @@ public class Tools {
 		//writes instructions
 		Util.write("Double-click:", Main.GRID_SIZE.getWidth() + 10, Main.GRID_SIZE.getHeight() - 200);
 		Util.write("F - Fill all tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 180);
-		Util.write("C - Clear all tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 160);
+		Util.write("C - Clear all tiles/objects.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 160);
 		Util.write("D - Fill all empty tiles.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 140);
+		Util.write("Click to add.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 300);
+		Util.write("Right click to delete.", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 280);
+		Util.write("Click and hold to add/delete", Main.GRID_SIZE.getWidth() + 20, Main.GRID_SIZE.getHeight() - 260);
+		Util.write("multiple objects.", Main.GRID_SIZE.getWidth() + 40, Main.GRID_SIZE.getHeight() - 245);
 		
 		//renders the save/open button
 		save.render();
@@ -57,16 +62,22 @@ public class Tools {
 		if (grabbedTexture != null) {
 			int x = Mouse.getX();
 			int y = Main.GRID_SIZE.getHeight() - Mouse.getY() + 1;
-			if (x < Math.min(Main.GRID_SIZE.getWidth(), Map.getWidth()*Main.TILE_SIZE) && y < Math.min(Main.GRID_SIZE.getHeight(), Map.getHeight()*Main.TILE_SIZE)) {
-				Util.render(grabbedTexture, (int) (x / Main.TILE_SIZE + .5) * Main.TILE_SIZE, (int) (y / Main.TILE_SIZE + .5)
-						* Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE, grabbedTexture.getTextureWidth(), grabbedTexture.getTextureHeight());
-			} else {
-				glColor4f(1, 1, 1, .5f);
-				Util.render(grabbedTexture, x, y, Main.TILE_SIZE,
-						Main.TILE_SIZE, grabbedTexture.getTextureWidth(),
-						grabbedTexture.getTextureHeight());
-				glColor4f(1, 1, 1, 1f);
+						
+			
+			if (x < Math.min(Main.GRID_SIZE.getWidth(), Map.getWidth()*Main.TILE_SIZE) && y < Math.min(Main.GRID_SIZE.getHeight(), Map.getHeight()*Main.TILE_SIZE)) 
+			{
+				x = (int) (x / Main.TILE_SIZE + .5) * Main.TILE_SIZE;
+				y = (int) (y / Main.TILE_SIZE + .5) * Main.TILE_SIZE;
 			}
+			
+			glColor4f(1, 1, 1, .5f);	
+			Util.render(grabbedTexture,
+					x, y,
+					Main.TILE_SIZE*Tabs.values()[selectedTab].getSize(Tabs.values()[selectedTab].getTextures().indexOf(grabbedTexture)).getWidth(),
+					Main.TILE_SIZE*Tabs.values()[selectedTab].getSize(Tabs.values()[selectedTab].getTextures().indexOf(grabbedTexture)).getHeight(),
+					grabbedTexture.getTextureWidth(),
+					grabbedTexture.getTextureHeight());
+			glColor4f(1, 1, 1, 1f);
 		}
 		
 		//render the tabs of the tool pane
@@ -96,6 +107,14 @@ public class Tools {
 		}
 		
 		Util.write(Tabs.values()[selectedTab].name(), Main.GRID_SIZE.getWidth() + 70, 20); //TODO center aligned with Util.getTextWidth
+		
+		Util.write("(" + (Map.getRenderOffset().getX()+1) + ", " + (Map.getRenderOffset().getY()+1) + ")", 0, 0);
+		
+		for(int i=2; i<=Math.min(Main.GRID_SIZE.getWidth(), Map.getWidth()*Main.TILE_SIZE)/Main.TILE_SIZE; i++)
+			Util.write(Integer.toString((Map.getRenderOffset().getX() + i)), (float)(Main.TILE_SIZE*(i-1)), 0);
+		
+		for(int i=2; i<=Math.min(Main.GRID_SIZE.getHeight(), Map.getHeight()*Main.TILE_SIZE)/Main.TILE_SIZE; i++)
+			Util.write(Integer.toString((Map.getRenderOffset().getY() + i)), 0, (float)(Main.TILE_SIZE*(i-1)));
 		
 	}
 	
@@ -144,15 +163,16 @@ public class Tools {
 			
 			if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
 			{
+				//add/remove object from map
 				if(grabbedTexture != null)
 				{
 					if(Mouse.isButtonDown(0) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0)))
-					{
+					{//add
 						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
 						if(slot != null)
 							slot.add(grabbedTexture, Tabs.values()[selectedTab]);
 					}else if((Mouse.isButtonDown(1) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0))))
-					{
+					{//remove
 						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
 						if(slot != null)
 							slot.remove(Tabs.values()[selectedTab]);
@@ -209,7 +229,7 @@ public class Tools {
 						for(int j=0; j<Map.getHeight(); j++)
 						{
 							if(grabbedTexture != null)
-								if(Map.get(i, j) == null)
+								if(Map.get(i, j).get(Tabs.Tile) == null)
 									Map.get(i, j).add(grabbedTexture, Tabs.values()[selectedTab]);
 						}
 					}
@@ -226,26 +246,41 @@ public class Tools {
 	
 	enum Tabs{
 		
-		Tile(0), Portal(1), Monster(2), NPC(3), Object(4);
+		Tile(2100, 0), Portal(2200, 1), Monster(2400, 2), NPC(2500, 3), Object(2700, 4);
 		
 		private List<Texture> textures = new ArrayList<Texture>();
+		private int index;
 		private int id;
+		private List<Dimension> size = new ArrayList<Dimension>();
 		
-		private Tabs(int id)
+		private Tabs(int id, int index)
 		{		
+			this.index = index;
 			this.id = id;
 			
 			File folder = new File("data/" + name().toLowerCase() + "/");
 						
 			File ids[] = folder.listFiles();
-									
+												
 			for(File folderID: ids)
 			{
-				if(!folderID.getName().contains(".")){
+				if(!folderID.getName().contains("."))
+				{
 					textures.add(Util.getTexture("data/" + name().toLowerCase() + "/" + folderID.getName()
 								+ (this.name().equals("Monster") ? "/front.png" : "/texture.png")));
+				
+					size.add(new Dimension(1, 1));
+					
+					if(name().equalsIgnoreCase("object"))
+					{
+						XMLParser parser = new XMLParser("object/" + (id + size.size()-1) + "/data.xml");
+						size.get(size.size()-1).setWidth(Integer.parseInt(parser.getAttribute("Object", "width")));
+						size.get(size.size()-1).setHeight(Integer.parseInt(parser.getAttribute("Object", "height")));
+					}
+					
 				}
 			}
+			
 		}
 		
 		public List<Texture> getTextures()
@@ -253,8 +288,19 @@ public class Tools {
 			return textures;
 		}
 
-		public int id() {
+		public int index() 
+		{
+			return index;
+		}
+		
+		public int id()
+		{
 			return id;
+		}
+		
+		public Dimension getSize(int index)
+		{
+			return size.get(index);
 		}
 		
 	}

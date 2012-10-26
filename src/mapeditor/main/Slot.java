@@ -17,26 +17,30 @@ public class Slot {
 	
 	public Texture get(Tabs type)
 	{
-		return textures[type.id()];
+		return textures[type.index()];
 	}
 
-	public void addHover(Texture texture, Tabs type) {
-		textures[type.id()] = texture;
-	}
-	
 	public void render(Tabs type)
 	{
-		if(textures[type.id()] != null)
-			Util.render(textures[type.id()], position.getX() - Map.getRenderOffset().getX()*Main.TILE_SIZE, position.getY() - Map.getRenderOffset().getY()*Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE, textures[type.id()].getTextureWidth(), textures[type.id()].getTextureHeight());
+		if(textures[type.index()] != null)
+		{
+				Util.render(textures[type.index()],
+							position.getX() - Map.getRenderOffset().getX()*Main.TILE_SIZE, //x
+							position.getY() - Map.getRenderOffset().getY()*Main.TILE_SIZE, //y
+							type.getSize(type.getTextures().indexOf(textures[type.index()])).getWidth()*Main.TILE_SIZE, //width
+							type.getSize(type.getTextures().indexOf(textures[type.index()])).getHeight()*Main.TILE_SIZE, //height
+							textures[type.index()].getTextureWidth(), //texture width
+							textures[type.index()].getTextureHeight()); //texture height
+			}
 	}
 	
 	public void remove(Tabs type)
 	{
-		textures[type.id()] = null;
+		textures[type.index()] = null;
 	}
 
 	public void add(Texture texture, Tabs type) {
-		textures[type.id()] = texture;
+		textures[type.index()] = texture;
 	}
 	
 	

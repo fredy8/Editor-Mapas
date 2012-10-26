@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import mapeditor.main.Tools.Tabs;
+
 public class XMLMapWriter {
 
 	BufferedWriter writer;
@@ -29,19 +31,18 @@ public class XMLMapWriter {
 			writer.write("<Map>\n");
 		
 				writer.write("\t<Tiles>\n");
+				//TODO
 				writer.write("\t</Tiles>\n");
 				
-				writer.write("\t<Portal>\n");
-				writer.write("\t</Portal>\n");
-				
-				writer.write("\t<Monster>\n");
-				writer.write("\t</Monster>\n");
-				
-				writer.write("\t<NPC>\n");
-				writer.write("\t</NPC>\n");
-
-				writer.write("\t<Object>\n");
-				writer.write("\t</Object>\n");
+				for(int i=1; i<Tabs.values().length; i++)
+				{
+					writer.write("\t<" + Tabs.values()[i].name() + "s>\n");
+					for(int x=0; x<Map.getWidth(); x++)
+						for(int y=0; y<Map.getHeight(); y++)
+							if(Tabs.values()[i].getTextures().contains(Map.get(x, y).get(Tabs.values()[i])))
+									writer.write("\t\t<" + Tabs.values()[i].name() +" id=\"" + (Tabs.values()[i].id()+Tabs.values()[i].getTextures().indexOf(Map.get(x, y).get(Tabs.values()[i]))) + "\" x=\"" + x + "\" y=\"" + y + "\" />\n");						
+					writer.write("\t</" + Tabs.values()[i].name() + "s>\n");
+				}
 			
 			writer.write("</Map>");
 		} catch (IOException e) {
