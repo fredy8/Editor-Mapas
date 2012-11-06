@@ -33,6 +33,7 @@ public class Tools {
 			public void run()
 			{
 				XMLMapWriter writer = new XMLMapWriter("test.xml");
+				System.out.println("Saved.");
 				writer.dumpFile();
 				writer.close();
 			}

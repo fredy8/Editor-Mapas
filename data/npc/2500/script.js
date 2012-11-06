@@ -12,7 +12,7 @@ case 0:
 		if(cm.isQuestTurnedIn(quest) || !cm.isQuestAvailable(quest)){
 			cm.sendOk("Have a nice day.");
 		}else{
-			cm.sendYesNo("Can you kill 3 monsters and bring me 3 HP potions?", 1, 2);
+			cm.sendYesNo("Can you kill 3 rats and bring me 2 HP potions?", 1, 2);
 		}
 	}
 	break;

@@ -10,6 +10,7 @@ public class Map {
 
 	private static Slot[][] matrix;
 	private static Point renderOffset = new Point(0, 0);
+	public static String NAME;
 	
 	public static void newMap(int width, int height)
 	{

@@ -2,8 +2,8 @@
     <drops>
         <item id="6300" chance="5"/>
         <item id="6301" chance="5"/>
-        <item id="a303" chance="3"/>    
-        <item id="a304" chance="4"/>
+        <item id="a305" chance="3"/>    
+        <item id="a306" chance="4"/>
     </drops>
     <skills>
     	<skill id="1792" />

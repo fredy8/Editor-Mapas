@@ -1,4 +1,4 @@
-<Quest name="Test Quest" description="You need to kill two monsters and hand them back to \(3001).">
+<Quest name="Test Quest" description="You need to kill two \(2400) and hand them back to \(3001).">
     <requirements>
         <monster_kills>
             <monster id="2400" amount="3"/>
