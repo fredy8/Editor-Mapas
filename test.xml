@@ -1,44 +1,13 @@
-<Map name="askd" width="10" height="10">
+<Map name="asljna" width="10" height="10">
 	<Tiles>
-		<Tile id="2103" amount="33" />
-		<Tile id="2100" amount="1" />
-		<Tile id="2101" amount="2" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2103" amount="4" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2100" amount="1" />
-		<Tile id="2103" amount="3" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2103" amount="4" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2100" amount="1" />
-		<Tile id="2100" amount="1" />
-		<Tile id="2103" amount="5" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="1" />
-		<Tile id="2103" amount="26" />
+		<Tile id="2100" amount="100" />
 	</Tiles>
 	<Portals>
-		<Portal id="2200" x="8" y="1" />
 	</Portals>
 	<Monsters>
-		<Monster id="2400" x="3" y="6" />
-		<Monster id="2400" x="8" y="5" />
-		<Monster id="2400" x="8" y="6" />
 	</Monsters>
 	<NPCs>
-		<NPC id="2501" x="7" y="4" />
 	</NPCs>
 	<Objects>
-		<Object id="2700" x="3" y="1" />
 	</Objects>
 </Map>

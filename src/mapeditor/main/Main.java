@@ -107,7 +107,7 @@ public class Main {
 		if(Character.toLowerCase(action) == 'n')
 		{			
 			System.out.println("Map name?");
-			Map.NAME = in.next();
+			Map.NAME = in.nextLine();
 			
 			int mapWidth;
 			do{
