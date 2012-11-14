@@ -1,28 +1,18 @@
-<Map name="1234" width="20" height="20">
+<Map name="sdkf" width="10" height="10">
 	<Tiles>
-		<Tile id="2107" amount="31" />
-		<Tile id="2101" amount="2" />
-		<Tile id="2107" amount="17" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2107" amount="17" />
-		<Tile id="2101" amount="2" />
-		<Tile id="2107" amount="18" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2107" amount="16" />
-		<Tile id="2101" amount="4" />
-		<Tile id="2107" amount="15" />
-		<Tile id="2101" amount="5" />
-		<Tile id="2107" amount="13" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2107" amount="1" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2107" amount="12" />
-		<Tile id="2101" amount="3" />
-		<Tile id="2107" amount="4" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2107" amount="19" />
-		<Tile id="2101" amount="1" />
-		<Tile id="2107" amount="209" />
+		<Tile id="2109" amount="15" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2109" amount="9" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2109" amount="9" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2109" amount="9" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2109" amount="9" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2109" amount="9" />
+		<Tile id="2100" amount="5" />
+		<Tile id="2109" amount="30" />
 	</Tiles>
 	<Portals>
 	</Portals>

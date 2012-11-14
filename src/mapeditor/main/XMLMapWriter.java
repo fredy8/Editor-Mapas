@@ -29,6 +29,14 @@ public class XMLMapWriter {
 	
 	public void dumpFile()
 	{		
+		for(int i=0; i<Map.getWidth(); i++)
+			for(int j=0; j<Map.getHeight(); j++)
+				if(Map.get(i, j).get(Tabs.Tile) == null)
+				{
+					System.out.println("You must fill all tiles.");
+					return;
+				}
+		
 		try {
 			writer.write("<Map name=\"" + Map.NAME + "\" width=\"" + Map.getWidth() + "\" height=\"" + Map.getHeight() + "\">\n");
 		

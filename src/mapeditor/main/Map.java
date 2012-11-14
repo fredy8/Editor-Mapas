@@ -1,9 +1,15 @@
 package mapeditor.main;
 
 import static org.lwjgl.opengl.GL11.glColor4f;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 import mapeditor.main.Tools.Tabs;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.Dimension;
 import org.lwjgl.util.Point;
 
 public class Map {
@@ -16,16 +22,59 @@ public class Map {
 	{
 		matrix = new Slot[width][height];
 		for(int i=0; i<matrix.length; i++)
-		{
 			for(int j=0; j<matrix[0].length; j++)
-			{
 				matrix[i][j] = new Slot(new Point(i*Main.TILE_SIZE, j*Main.TILE_SIZE));
-			}
-		}
 	}
 	
-	public static void openMap(int id)
+	public static void openMap(String mapID)
 	{
+		XMLParser parser = new XMLParser("map/" + mapID + ".xml");
+		
+		// Parse map info
+		NAME = parser.getAttribute("Map", "name");
+		Dimension size = new Dimension();
+		size.setWidth(Integer.parseInt(parser.getAttribute("Map", "width")));
+		size.setHeight(Integer.parseInt(parser.getAttribute("Map", "height")));
+		matrix = new Slot[size.getWidth()][size.getHeight()];
+		
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix[0].length; j++)
+				matrix[i][j] = new Slot(new Point(i*Main.TILE_SIZE, j*Main.TILE_SIZE));
+		
+		// Parse tiles
+		Queue<Integer> tileQueue = new LinkedList<Integer>();
+
+		List<java.util.Map<String, String>> tiles = parser.getChildrenAttributes("Map/Tiles");
+		for (java.util.Map<String, String> data : tiles)
+		{
+			int id = Integer.parseInt(data.get("id"));
+			int amount = Integer.parseInt(data.get("amount"));
+			System.out.println(id);
+			for (int i = 0; i < amount; i++)
+				tileQueue.add(id);
+		}
+		
+		for (int j = 0; j < size.getHeight(); j++)
+			for (int i = 0; i < size.getWidth(); i++)
+				matrix[i][j].add(Tabs.Tile.getTextures().get(tileQueue.poll() - Tabs.Tile.id()), Tabs.Tile);
+				
+		// Parse all other entities
+		String xmlElements[] = { "Portals", "Monsters", "NPCs", "Objects" };
+
+		for (String xmlElement : xmlElements)
+		{
+			List<java.util.Map<String, String>> entities = parser.getChildrenAttributes("Map/" + xmlElement);
+			for (java.util.Map<String, String> data : entities)
+			{
+				
+				Point position = new Point(Integer.parseInt(data.get("x")), Integer.parseInt(data.get("y")));
+				int id = Integer.parseInt(data.get("id"));
+				
+				for(Tabs tab: Tabs.values())
+					if(tab.name().equalsIgnoreCase(xmlElement.substring(0, xmlElement.length()-1)))
+						matrix[position.getX()][position.getY()].add(tab.getTextures().get(id - tab.id()), tab);
+			}
+		}
 		
 	}
 	
