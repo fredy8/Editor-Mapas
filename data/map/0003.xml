@@ -38,7 +38,11 @@
 		<Tile id="2106" amount="3" />
 		<Tile id="2100" amount="17" />
 		<Tile id="2106" amount="3" />
-		<Tile id="2100" amount="29" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="1" />
+		<Tile id="2100" amount="1" />
+		<Tile id="2106" amount="1" />
+		<Tile id="2100" amount="9" />
 	</Tiles>
 	<Portals>
 		<Portal id="2203" x="9" y="19" />
@@ -48,12 +52,33 @@
 	<NPCs>
 	</NPCs>
 	<Objects>
+		<Object id="2703" x="1" y="2" />
 		<Object id="2702" x="1" y="10" />
 		<Object id="2702" x="2" y="2" />
+		<Object id="2703" x="2" y="6" />
+		<Object id="2703" x="2" y="15" />
+		<Object id="2703" x="3" y="5" />
+		<Object id="2703" x="3" y="6" />
+		<Object id="2703" x="5" y="1" />
+		<Object id="2703" x="5" y="10" />
+		<Object id="2703" x="5" y="14" />
 		<Object id="2702" x="5" y="17" />
+		<Object id="2703" x="7" y="4" />
 		<Object id="2702" x="7" y="5" />
+		<Object id="2703" x="7" y="10" />
+		<Object id="2703" x="11" y="10" />
+		<Object id="2703" x="11" y="11" />
+		<Object id="2703" x="13" y="1" />
+		<Object id="2703" x="13" y="9" />
 		<Object id="2702" x="14" y="10" />
+		<Object id="2703" x="14" y="16" />
+		<Object id="2703" x="15" y="2" />
+		<Object id="2703" x="15" y="3" />
+		<Object id="2703" x="15" y="4" />
+		<Object id="2703" x="15" y="8" />
 		<Object id="2702" x="17" y="1" />
+		<Object id="2703" x="17" y="7" />
+		<Object id="2703" x="17" y="14" />
 		<Object id="2702" x="17" y="16" />
 	</Objects>
 </Map>
