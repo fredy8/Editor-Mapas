@@ -1,0 +1,59 @@
+<Map name="Fields" width="20" height="20">
+	<Tiles>
+		<Tile id="2100" amount="8" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="17" />
+		<Tile id="2106" amount="3" />
+		<Tile id="2100" amount="29" />
+	</Tiles>
+	<Portals>
+		<Portal id="2203" x="9" y="19" />
+	</Portals>
+	<Monsters>
+	</Monsters>
+	<NPCs>
+	</NPCs>
+	<Objects>
+		<Object id="2702" x="1" y="10" />
+		<Object id="2702" x="2" y="2" />
+		<Object id="2702" x="5" y="17" />
+		<Object id="2702" x="7" y="5" />
+		<Object id="2702" x="14" y="10" />
+		<Object id="2702" x="17" y="1" />
+		<Object id="2702" x="17" y="16" />
+	</Objects>
+</Map>
