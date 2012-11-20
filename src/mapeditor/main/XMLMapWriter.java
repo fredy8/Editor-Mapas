@@ -29,6 +29,14 @@ public class XMLMapWriter {
 	
 	public void dumpFile()
 	{		
+		for(int i=0; i<Map.getWidth(); i++)
+			for(int j=0; j<Map.getHeight(); j++)
+				if(Map.get(i, j).get(Tabs.Tile) == null)
+				{
+					System.out.println("You must fill all tiles.");
+					return;
+				}
+		
 		try {
 			writer.write("<Map name=\"" + Map.NAME + "\" width=\"" + Map.getWidth() + "\" height=\"" + Map.getHeight() + "\">\n");
 		
@@ -40,15 +48,15 @@ public class XMLMapWriter {
 				idAmount.add(tileID);
 				idAmount.add(0);
 				
-				for(int i=0; i<Map.getWidth(); i++)
+				for(int i=0; i<Map.getHeight(); i++)
 				{
-					for(int j=0; j<Map.getHeight(); j++)
+					for(int j=0; j<Map.getWidth(); j++)
 					{
 						if(Tabs.Tile.id() + Tabs.values()[0].getTextures().indexOf(Map.get(j, i).get(Tabs.values()[0])) == tileID)
 							idAmount.set(idAmount.size() - 1, idAmount.get(idAmount.size() - 1) + 1);
 						else
 						{
-							tileID = Tabs.Tile.id() + Tabs.values()[0].getTextures().indexOf(Map.get(i, j).get(Tabs.values()[0]));
+							tileID = Tabs.Tile.id() + Tabs.values()[0].getTextures().indexOf(Map.get(j, i).get(Tabs.values()[0]));
 							idAmount.add(tileID);
 							idAmount.add(1);
 						}

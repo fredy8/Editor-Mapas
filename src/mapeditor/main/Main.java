@@ -26,12 +26,14 @@ public class Main {
 	public static final Dimension GRID_SIZE;
 	public static final int TILE_SIZE;
 	
+	public static String id = "";
+	public static boolean open = true;
+	
 	//TODO map should be "infinite" (expanding) and should be written in xml depending on the max width/height with a tile
 	//TODO render grabbed objects big
 	//TODO no strong entity stacking
 	//TODO render ids with entities in tools
 	//TODO add mouse clicks instructions
-	//TODO write tiles to xml
 	
 	static
 	{
@@ -47,7 +49,6 @@ public class Main {
 	
 	public Main()
 	{
-		
 		try {
 			Display.setDisplayMode(new DisplayMode(GRID_SIZE.getWidth() + Tools.WIDTH, GRID_SIZE.getHeight()));
 			Display.setTitle("Map Editor");
@@ -58,6 +59,9 @@ public class Main {
 		}
 
 		initGL();
+		
+		if(open)
+			Map.openMap(id);
 		
 		while (!Display.isCloseRequested())											
 		{	
@@ -106,9 +110,14 @@ public class Main {
 		
 		if(Character.toLowerCase(action) == 'n')
 		{			
+			open = false;
+			
 			System.out.println("Map name?");
 			Map.NAME = in.next();
 			
+			System.out.println("Map id?");
+			id = in.next();
+						
 			int mapWidth;
 			do{
 				System.out.println("Map width?");
@@ -124,14 +133,9 @@ public class Main {
 			Map.newMap(mapWidth, mapHeight);
 			
 		}else if(Character.toLowerCase(action) == 'o')
-		{
-			int id;
-			do{
-				System.out.println("Map id?");
-				id = in.nextInt();
-			}while(id <=0 && id >= 256);
-			
-			Map.openMap(id);
+		{			
+			System.out.println("Map id?");
+			id = in.next();	
 		}
 			
 		new Main();

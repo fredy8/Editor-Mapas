@@ -32,7 +32,7 @@ public class Tools {
 		save = new Button("Save", new Point(Main.GRID_SIZE.getWidth() + WIDTH/4, Main.GRID_SIZE.getHeight() - 100), new Runnable(){
 			public void run()
 			{
-				XMLMapWriter writer = new XMLMapWriter("test.xml");
+				XMLMapWriter writer = new XMLMapWriter("data/map/" + Main.id + ".xml");
 				System.out.println("Saved.");
 				writer.dumpFile();
 				writer.close();
@@ -164,20 +164,33 @@ public class Tools {
 			
 			if(x < Main.GRID_SIZE.getWidth() && y < Main.GRID_SIZE.getHeight())
 			{
-				//add/remove object from map
-				if(grabbedTexture != null)
-				{
-					if(Mouse.isButtonDown(0) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0)))
-					{//add
-						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
-						if(slot != null)
+				// add/remove object from map
+
+				if (Mouse.isButtonDown(0)
+						&& (selectedTab == 0 ? true
+								: (Mouse.getDX() == 0 && Mouse.getDY() == 0))) {// add
+					if (grabbedTexture != null) {
+						Slot slot = Map.get((int) (x / Main.TILE_SIZE + .5)
+								+ Map.getRenderOffset().getX(), (int) (y
+								/ Main.TILE_SIZE + .5)
+								+ Map.getRenderOffset().getY());
+
+						if (slot != null)
+						{
+							for (Tabs tab : Tabs.values())
+								if (tab != Tabs.Tile && slot.get(tab) != null)
+									return;
 							slot.add(grabbedTexture, Tabs.values()[selectedTab]);
-					}else if((Mouse.isButtonDown(1) && (selectedTab == 0 ? true : (Mouse.getDX() == 0 && Mouse.getDY() == 0))))
-					{//remove
-						Slot slot = Map.get((int)(x/Main.TILE_SIZE+.5) + Map.getRenderOffset().getX(), (int)(y/Main.TILE_SIZE+.5) + Map.getRenderOffset().getY());
-						if(slot != null)
-							slot.remove(Tabs.values()[selectedTab]);
+						}
 					}
+				} else if ((Mouse.isButtonDown(1) && (selectedTab == 0 ? true
+						: (Mouse.getDX() == 0 && Mouse.getDY() == 0)))) {// remove
+					Slot slot = Map.get((int) (x / Main.TILE_SIZE + .5)
+							+ Map.getRenderOffset().getX(), (int) (y
+							/ Main.TILE_SIZE + .5)
+							+ Map.getRenderOffset().getY());
+					if (slot != null)
+						slot.remove(Tabs.values()[selectedTab]);
 				}
 			}
 		}
