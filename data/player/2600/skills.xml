@@ -1,0 +1,8 @@
+<Skills>
+    <Skill id="0701" reqLevel="1">
+    <Skill id="0702" reqLevel="5">
+    	<RequiredSkills>
+    	    <Skill id="0701" level="3"/>
+    	</RequiredSkills>
+    </Skill>
+</Skills>

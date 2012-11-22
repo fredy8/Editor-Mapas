@@ -1,3 +1,3 @@
 <EquipItem name="Piece of leather" description="Seems that you can use this as a helmet" type="helmet" price="3">
-    <stats maxHP="5" maxMP="0" atk="0" def="1" str="1" />
+    <stats maxhp="5" maxmp="0" atk="0" def="1" str="1" />
 </EquipItem>

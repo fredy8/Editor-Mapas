@@ -1,0 +1,5 @@
+<Skill name="Slash" delay="500" description="A weak slash.." maxLevel="5">
+    <details data="Inflicts \level[%l] damage.">
+        <list level="200%,220%,230%,240%,250%"/> 
+    </details>
+</Skill>

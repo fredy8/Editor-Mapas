@@ -1,162 +1,353 @@
-<Map name="Sewers" width="30" height="30">
-    <Tiles>
-    
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="8" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="8" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="8" />
-        <Tile id="2102" amount="8" />
-        
-        
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="10" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="14" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="4" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="14" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="4" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="14" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="4" />
-        <Tile id="2102" amount="2" />
-        
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2102" amount="8" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="14" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="4" />
-        
-        <Tile id="2102" amount="3" />
-        <Tile id="2103" amount="25" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="3" />
-        <Tile id="2103" amount="25" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="3" />
-        <Tile id="2103" amount="25" />
-        <Tile id="2102" amount="2" />
-        
-        <Tile id="2102" amount="22" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="22" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="22" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="2" />
-        
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="2" />
-        
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="24" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="24" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2103" amount="2" />
-        <Tile id="2102" amount="24" />
-        
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="4" />
-        <Tile id="2102" amount="2" />
-        <Tile id="2103" amount="24" />
-        <Tile id="2102" amount="4" />
-        
-        <Tile id="2102" amount="30" />
-        <Tile id="2102" amount="30" />
-        <Tile id="2102" amount="30" />
-        
-    </Tiles>
-    <Portals>
-    	<Portal id="2202" x="15" y="13" />
-    </Portals>
-    <Monsters>
-	    <Monster id="2400" x="2" y="4" />
-    	<Monster id="2400" x="2" y="5" />
-    	<Monster id="2400" x="3" y="4" />
-    	<Monster id="2400" x="3" y="12" />
-	    <Monster id="2400" x="4" y="6" />
-	    <Monster id="2400" x="4" y="24" />
-	    <Monster id="2400" x="6" y="19" />
-	    <Monster id="2400" x="10" y="18" />
-	    <Monster id="2400" x="14" y="20" />
-	    <Monster id="2400" x="21" y="18" />
-	    <Monster id="2400" x="7" y="25" />
-	    <Monster id="2400" x="14" y="24" />
-	    <Monster id="2400" x="21" y="26" />
-	    
-	    <Monster id="2400" x="9" y="7" />
-	    <Monster id="2400" x="10" y="7" />
-	    <Monster id="2400" x="11" y="14" />
-	    <Monster id="2400" x="12" y="14" />
-	    <Monster id="2400" x="15" y="2" />
-	    <Monster id="2400" x="16" y="2" />
-	    	
-	    
-	    
-    </Monsters>
-    <NPCs>
-    </NPCs>
-    <Objects>
-    </Objects>
+<Map name="Sewers" width="40" height="40">
+	<Tiles>
+		<Tile id="2102" amount="42" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="8" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="7" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="22" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="22" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="20" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="19" />
+		<Tile id="2110" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="16" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="25" />
+		<Tile id="2103" amount="11" />
+		<Tile id="2104" amount="3" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="1" />
+		<Tile id="2103" amount="5" />
+		<Tile id="2102" amount="18" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="5" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="16" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="10" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="4" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="15" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="37" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="29" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="5" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="28" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2102" amount="5" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="27" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2110" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2102" amount="27" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="27" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="31" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="30" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="30" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="30" />
+		<Tile id="2104" amount="3" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="30" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="30" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="20" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="7" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="18" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="6" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="16" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="5" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="7" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2103" amount="4" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="5" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2103" amount="5" />
+		<Tile id="2102" amount="7" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="2" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="15" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="11" />
+		<Tile id="2103" amount="6" />
+		<Tile id="2102" amount="17" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2103" amount="3" />
+		<Tile id="2102" amount="19" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2102" amount="24" />
+	</Tiles>
+	<Portals>
+		<Portal id="2202" x="14" y="12" />
+	</Portals>
+	<Monsters>
+		<Monster id="2400" x="1" y="31" />
+		<Monster id="2400" x="2" y="18" />
+		<Monster id="2400" x="3" y="2" />
+		<Monster id="2400" x="3" y="12" />
+		<Monster id="2400" x="3" y="24" />
+		<Monster id="2400" x="5" y="36" />
+		<Monster id="2400" x="7" y="1" />
+		<Monster id="2400" x="12" y="35" />
+		<Monster id="2400" x="13" y="4" />
+		<Monster id="2400" x="13" y="12" />
+		<Monster id="2400" x="15" y="39" />
+		<Monster id="2400" x="23" y="33" />
+		<Monster id="2400" x="24" y="2" />
+		<Monster id="2400" x="24" y="12" />
+		<Monster id="2400" x="32" y="4" />
+		<Monster id="2400" x="32" y="22" />
+		<Monster id="2400" x="33" y="21" />
+		<Monster id="2400" x="33" y="23" />
+		<Monster id="2400" x="33" y="38" />
+		<Monster id="2400" x="35" y="26" />
+		<Monster id="2400" x="36" y="8" />
+		<Monster id="2400" x="36" y="32" />
+		<Monster id="2400" x="37" y="7" />
+	</Monsters>
+	<NPCs>
+	</NPCs>
+	<Objects>
+	</Objects>
 </Map>

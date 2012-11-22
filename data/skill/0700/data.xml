@@ -1,5 +1,0 @@
-<Skill delay="250" description="Shoots something" maxLevel="5">
-    <details data="Inflicts \level[%l] damage to each monster"> # %l returns the level, \varname[i] checks for the ith value in the list
-        <list level="200%,220%,230%,240%,250%"/> 
-    </details>
-</Skill>

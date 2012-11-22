@@ -1,4 +1,4 @@
-<Game name="Test Game" width="15" height="15" tile_size="50px">
+<Game name="Test Game" width="20" height="15" tile_size="50px">
     <Map id="0000" />
     <Map id="0001" />
     <Map id="0002" />

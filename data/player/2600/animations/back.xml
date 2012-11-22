@@ -1,0 +1,8 @@
+<Animation imageWidth="48" imageHeight="48" timePerFrame="100">
+    <Coordinates>
+        <coordinate x="0" y="96"/>
+        <coordinate x="48" y="96"/>
+        <coordinate x="0" y="96"/>
+        <coordinate x="96" y="96"/>
+    </Coordinates>
+</Animation>
