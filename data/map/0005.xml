@@ -1,4 +1,4 @@
-<Map name="Sewers2" width="40" height="20">
+<Map name="Sewers_-3" width="40" height="20">
 	<Tiles>
 		<Tile id="2102" amount="59" />
 		<Tile id="2105" amount="1" />
@@ -106,4 +106,9 @@
 	</NPCs>
 	<Objects>
 	</Objects>
+	<Switches>
+		<switch id="0A04" x="27" y="9" />
+	    <switch id="0A05" x="29" y="9" />
+	    <switch id="0A06" x="28" y="15" />
+	</Switches>
 </Map>

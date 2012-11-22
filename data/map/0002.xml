@@ -350,4 +350,8 @@
 	</NPCs>
 	<Objects>
 	</Objects>
+	<Switches>
+	    <switch id="0A01" x="35" y="8" />
+	    <switch id="0A02" x="33" y="22" />
+	</Switches>
 </Map>

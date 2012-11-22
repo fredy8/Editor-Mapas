@@ -1,0 +1,71 @@
+<Map name="King's Lair" width="20" height="20">
+	<Tiles>
+		<Tile id="2102" amount="35" />
+		<Tile id="2107" amount="3" />
+		<Tile id="2102" amount="16" />
+		<Tile id="2107" amount="4" />
+		<Tile id="2102" amount="14" />
+		<Tile id="2107" amount="6" />
+		<Tile id="2102" amount="12" />
+		<Tile id="2107" amount="8" />
+		<Tile id="2102" amount="11" />
+		<Tile id="2107" amount="9" />
+		<Tile id="2102" amount="10" />
+		<Tile id="2107" amount="10" />
+		<Tile id="2102" amount="9" />
+		<Tile id="2107" amount="11" />
+		<Tile id="2102" amount="5" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2107" amount="13" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2107" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2107" amount="13" />
+		<Tile id="2102" amount="2" />
+		<Tile id="2111" amount="1" />
+		<Tile id="2107" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2107" amount="1" />
+		<Tile id="2104" amount="1" />
+		<Tile id="2107" amount="13" />
+		<Tile id="2102" amount="3" />
+		<Tile id="2107" amount="1" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2107" amount="2" />
+		<Tile id="2103" amount="2" />
+		<Tile id="2107" amount="11" />
+		<Tile id="2102" amount="4" />
+		<Tile id="2107" amount="1" />
+		<Tile id="2102" amount="1" />
+		<Tile id="2107" amount="14" />
+		<Tile id="2102" amount="7" />
+		<Tile id="2103" amount="1" />
+		<Tile id="2107" amount="12" />
+		<Tile id="2102" amount="10" />
+		<Tile id="2107" amount="10" />
+		<Tile id="2102" amount="12" />
+		<Tile id="2107" amount="8" />
+		<Tile id="2102" amount="13" />
+		<Tile id="2107" amount="7" />
+		<Tile id="2102" amount="15" />
+		<Tile id="2107" amount="5" />
+		<Tile id="2102" amount="16" />
+		<Tile id="2107" amount="4" />
+		<Tile id="2102" amount="22" />
+	</Tiles>
+	<Portals>
+	</Portals>
+	<Monsters>
+		<Monster id="2402" x="13" y="7" />
+	</Monsters>
+	<NPCs>
+	</NPCs>
+	<Objects>
+	</Objects>
+	<Switches>
+		<switch id="0A06" x="0" y="10" />
+	</Switches>
+</Map>

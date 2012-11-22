@@ -1,0 +1,14 @@
+<Monster name="King Rat" damage="10" maxHP="200" exp="50" minGold="0" maxGold="50">
+    <drops>
+        <item id="6300" chance="100"/>
+        <item id="a303" chance="20"/>
+	<item id="a304" chance="20"/>
+	<item id="a305" chance="20"/>
+	<item id="a306" chance="20"/>    
+        <item id="a307" chance="20"/>
+	<item id="a308" chance="20"/>
+    </drops>
+    <skills>
+    	<skill id="0701" />
+    </skills>
+</Monster>

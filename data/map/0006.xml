@@ -104,4 +104,8 @@
 	</NPCs>
 	<Objects>
 	</Objects>
+	<Switches>
+		<switch id="0A03" x="3" y="3" />
+	    <switch id="0A02" x="25" y="25" />
+	</Switches>
 </Map>
